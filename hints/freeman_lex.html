@@ -1,0 +1,152 @@
+<body data-author="freeman_lex">
+<div class="question-answer">
+    <div class="question">
+        I have no idea how to start solving this mission.
+    </div>
+    <div class="answer">
+        The general idea is to move over the list and, depending on the type of current value,
+        concatenate or add this value to the variable.
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Ok, let's start to implement it into code. What instrument of Python should I use
+        to move over the list?
+    </div>
+    <div class="answer">
+        In this solution I offer you to use <a target="_blank"
+        href="https://docs.python.org/3/tutorial/controlflow.html#for-statements">for statement</a>:
+        <pre class="brush: python">
+for value in items:
+    # do something            
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Previously, you wrote 'depending on the type of current value'.
+        Could you please clarify this step?
+    </div>
+    <div class="answer">
+        Of course! To chose between different commands use <a target="_blank"
+        href="https://docs.python.org/3/tutorial/controlflow.html#if-statements">if statement</a>:
+        <pre class="brush: python">
+if condition == True:
+    # do something
+else:
+    # do something else
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        And what is my condition for if statement?
+    </div>
+    <div class="answer">
+        Well, here you will need <a target="_blank" href="https://docs.python.org/3/library/functions.html#type">type()</a>
+        function and types of input values in this mission you already know from description - str and int:
+        <pre class="brush: python">
+if type(value) == str:
+    # do something
+else: # in case of int value
+    # do something else
+        </pre>
+        Because you have only two types of values in list in this mission,
+        you don't need to check the other type.
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        But this is only one check. I feel, I need to combine previous hints,
+        but I don't know how. So I need another hint.
+    </div>
+    <div class="answer">
+        Yes, you are right! To check all values, you need to do checking on
+        every iteration of for statement. So you need to put if statement
+        inside for statement:
+        <pre class="brush: python">
+for value in items:
+    if type(value) == str:
+        # do something
+    else:
+        # do something else
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Ok. What to do next? How to add or concatenate?
+    </div>
+    <div class="answer">
+        First of all, before for statement you must declare two variables, one - 
+        for your future concatenated string, the other - for sum of integers.
+        <pre class="brush: python">
+conc = ''
+sumed = 0
+        </pre>
+        Then, inside if and else statements do appropriate operations.
+        Both types support concatenation operator '+='. Update predeclared variables:
+        <pre class="brush: python">
+conc = ''
+sumed = 0
+for value in items:
+    if type(value) == str:
+        conc += value
+    else:
+        sumed += value
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Something is still missing. What is the final solution?
+    </div>
+    <div class="answer">
+        Yes, you must declare the function itself and return values
+        stored in conc and sumed variables as tuple:
+        <pre class="brush: python">
+def sum_by_types(items: list[str, int]) -> tuple[str, int]:
+    
+    conc = ''
+    sumed = 0
+    for value in items:
+        if type(value) == str:
+            conc += value
+        else:
+            sumed += value
+                    
+    return (conc, sumed)
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        I wonder, if this mission is solvable in one line?
+    </div>
+    <div class="answer">
+        Yes, because Python is very cool! One of so called oneliners
+        is the following and needs additional import:
+        <pre class="brysh: python">
+from functools import reduce
+
+def sum_by_types(items: list[str, int]) -> tuple[str, int]:
+    
+    return reduce(lambda a, b: (a[0] + b, a[1])
+                               if type(b) != int
+                               else (a[0], a[1] + b),
+                               [('', 0)] + items)
+
+        </pre>
+        It is one line, believe me!)
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Wow! Thanks. Both variants work fine! I know and understand more now!
+    </div>
+    <div class="answer">
+        Glad to hear it!
+    </div>
+</div>
+
+</body>

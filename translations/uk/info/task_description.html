@@ -1,0 +1,43 @@
+<!-- Describe task in general -->
+
+<p>
+    Тобі дано {% if interpreter.slug == "js-node" %}масив{% else %}список{% endif %}.
+    Кожне значення з цього {% if interpreter.slug == "js-node" %}масиву{% else %}списку{% endif %} може бути рядком або цілим числом.
+    Твоє завдання - повернути два значення. Перше значення - це об'єднання всіх рядків {% if interpreter.slug == "js-node" %}масиву{% else %}списку{% endif %}.
+    Друге - це сума всіх чисел {% if interpreter.slug == "js-node" %}масиву{% else %}списку{% endif %}.
+</p>
+
+<!-- Explain input and output values -->
+<p>
+    <strong>Вхідні дані: </strong> {% if interpreter.slug == "js-node" %}Масив{% else %}Список{% endif %} рядків і цілих чисел.
+</p>
+
+<p>
+    <strong>Вихідні дані: </strong> {% if interpreter.slug == "js-node" %}Масив{% else %}Кортеж{% endif %}.
+</p>
+
+
+<!-- Give some usage examples -->
+<div class="for_info_only">
+    <p>
+        <strong>Приклади:</strong>
+    </p>
+
+    <pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">{{init_code_tmpl}}</pre>
+</div>
+
+
+<!-- Here you can explain how it can be used in development -->
+<!-- The section is optional -->
+<!--<p class="for_info_only">
+
+    <strong>How it’s used: </strong>
+    <i>(math is used everywhere)</i>
+</p>-->
+
+<!-- Here you can explain some constraints for input-->
+<!-- The section is optional -->
+<!--<p>
+    <strong>Precondition:</strong>
+    <i>both given ints should be between -1000 and 1000</i>
+</p>-->
