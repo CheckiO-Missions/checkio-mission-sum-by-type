@@ -105,7 +105,7 @@ for value in items:
         Yes, you must declare the function itself and return values
         stored in conc and sumed variables as tuple:
         <pre class="brush: python">
-def sum_by_types(items: list[str, int]) -> tuple[str, int]:
+def sum_by_types(items: list[str, int]) -> tuple[str, int] | list[str, int]:
     
     conc = ''
     sumed = 0
@@ -129,7 +129,7 @@ def sum_by_types(items: list[str, int]) -> tuple[str, int]:
         <pre class="brysh: python">
 from functools import reduce
 
-def sum_by_types(items: list[str, int]) -> tuple[str, int]:
+def sum_by_types(items: list[str, int]) -> tuple[str, int] | list[str, int]:
     
     return reduce(lambda a, b: (a[0] + b, a[1])
                                if type(b) != int

@@ -104,7 +104,7 @@ for value in items:
         Так, ти повинен проголосити функцію і додати повернення
         значень, що збережені в змінних conc і sumed, у вигляді кортежу.
         <pre class="brush: python">
-def sum_by_types(items: list[str, int]) -> tuple[str, int]:
+def sum_by_types(items: list[str, int]) -> tuple[str, int] | list[str, int]:
     
     conc = ''
     sumed = 0
@@ -128,7 +128,7 @@ def sum_by_types(items: list[str, int]) -> tuple[str, int]:
         <pre class="brysh: python">
 from functools import reduce
 
-def sum_by_types(items: list[str, int]) -> tuple[str, int]:
+def sum_by_types(items: list[str, int]) -> tuple[str, int] | list[str, int]:
     
     return reduce(lambda a, b: (a[0] + b, a[1])
                                if type(b) != int
