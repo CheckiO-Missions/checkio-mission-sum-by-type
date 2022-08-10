@@ -1,0 +1,151 @@
+<body data-author="freeman_lex">
+<div class="question-answer">
+    <div class="question">
+        Я уявлення не маю, як розв'язати цю місію.
+    </div>
+    <div class="answer">
+        Загальна ідея - це проходити по списку і, залежно від типу поточного значення,
+        приєднувати чи додавати його до змінної.
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Добре, давай почнемо втілювати це в коді. Який інструмент Python мені використати
+        для проходження по списку?
+    </div>
+    <div class="answer">
+        У цьому розв'язку я раджу тобі використати <a target="_blank"
+        href="https://docs.python.org/3/tutorial/controlflow.html#for-statements">цикл for</a>:
+        <pre class="brush: python">
+for value in items:
+    # виконувати команди            
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Вище ти писав "залежно від типу поточного значення". Проясни цей крок.
+    </div>
+    <div class="answer">
+        Звісно! Щоб вибрати з декількох команд, використай <a target="_blank"
+        href="https://docs.python.org/3/tutorial/controlflow.html#if-statements">умову if</a>:
+        <pre class="brush: python">
+if condition == True:
+    # виконувати команди
+else:
+    # виконувати інші команди
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        І якою буде моя умова для if...?
+    </div>
+    <div class="answer">
+        Отже, тут тобі знадобиться функція <a target="_blank" href="https://docs.python.org/3/library/functions.html#type">type()</a>
+        і типи вхідних значень в цій місії, які ти вже знаєш з опису - str і int:
+        <pre class="brush: python">
+if type(value) == str:
+    # виконувати команди
+else: # у випадку значення типу int
+    # виконувати інші команди
+        </pre>
+        Оскільки у цій місії в списку значення лише двох типів,
+        тобі не потрібно перевіряти інший тип.
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Але це лише одна перевірка. Я відчуваю, що потрібно скомбінувати попередні
+        підказки, але не знаю як. Потрібна наступна підказка.
+    </div>
+    <div class="answer">
+        Так, ти правий!
+        Для перевірки всіх значень, тобі потрібно робити перевірку
+        на кожній ітерації for. Для цього помісти if всередину for:
+        <pre class="brush: python">
+for value in items:
+    if type(value) == str:
+        # виконувати команди
+    else:
+        # виконувати інші команди
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Поки зрозуміло. Що робити далі? Як додавати чи приєднувати?
+    </div>
+    <div class="answer">
+        Перш за все, перед for ти повинен проголосити дві змінні, одну - 
+        для твого майбутнього об'єднаного рядка, іншу - для суми цілих чисел.
+        <pre class="brush: python">
+conc = ''
+sumed = 0
+        </pre>
+        Тоді всередині if і else виконай відповідні операції.
+        Обоє типів підтримують оператор '+='. Тож оновлюй проголошені змінні:
+        <pre class="brush: python">
+conc = ''
+sumed = 0
+for value in items:
+    if type(value) == str:
+        conc += value
+    else:
+        sumed += value
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Все ж чогось не вистачає. Яким буде моє остаточне рішення?
+    </div>
+    <div class="answer">
+        Так, ти повинен проголосити функцію і додати повернення
+        значень, що збережені в змінних conc і sumed, у вигляді кортежу.
+        <pre class="brush: python">
+def sum_by_types(items: list[str, int]) -> tuple[str, int] | list[str, int]:
+    
+    conc = ''
+    sumed = 0
+    for value in items:
+        if type(value) == str:
+            conc += value
+        else:
+            sumed += value
+                    
+    return (conc, sumed)
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">\
+        Цікаво, чи є для цієї місії розв'язок в один рядок?
+    </div>
+    <div class="answer">
+        Так, тому що Python крутий! Один із так званих ванлайнерів
+        ось такий і потребує додаткового імпорту:
+        <pre class="brysh: python">
+from functools import reduce
+
+def sum_by_types(items: list[str, int]) -> tuple[str, int] | list[str, int]:
+    
+    return reduce(lambda a, b: (a[0] + b, a[1])
+                               if type(b) != int
+                               else (a[0], a[1] + b),
+                               [('', 0)] + items)
+
+        </pre>
+        Повір мені, це один рядок!)
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Вау! Дякую. Обидва варіанти працюють як слід! Тепер я знаю і розумію більше!
+    </div>
+    <div class="answer">
+        Приємно це чути!
+    </div>
+</div>
+
+</body>

@@ -15,19 +15,19 @@ TESTS = {
             "answer": ['', 0],
         },
         {
-            "input": [[1,2,3]],
+            "input": [[1, 2, 3]],
             "answer": ['', 6],
         },
         {
-            "input": [['1',2,3]],
+            "input": [['1', 2, 3]],
             "answer": ['1', 5],
         },
         {
-            "input": [['1','2',3]],
+            "input": [['1', '2', 3]],
             "answer": ['12', 3],
         },
         {
-            "input": [['1','2','3']],
+            "input": [['1', '2', '3']],
             "answer": ['123', 0],
         },
         {
@@ -37,11 +37,11 @@ TESTS = {
     ],
     "Extra": [
         {
-            "input": [['hello',' ', 'world']],
+            "input": [['hello', ' ', 'world']],
             "answer": ['hello world', 0],
         },
         {
-            "input": [[1,2,3,4,5, 'and', 6]],
+            "input": [[1, 2, 3, 4, 5, 'and', 6]],
             "answer": ['and', 21],
         }
     ]
