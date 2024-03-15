@@ -1,0 +1,152 @@
+<body data-author="freeman_lex">
+<div class="question-answer">
+    <div class="question">
+        Ich habe keine Ahnung, wie ich mit der Lösung dieser Aufgabe beginnen soll.
+    </div>
+    <div class="answer">
+        Die allgemeine Idee ist, sich über die Liste zu bewegen und, je nach Art des aktuellen Wertes,
+        diesen Wert an die Variable zu verketten oder hinzuzufügen.
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Okay, beginnen wir mit der Implementierung in Code. Welches Instrument von Python sollte ich verwenden
+        um über die Liste zu gehen?
+    </div>
+    <div class="answer">
+        In dieser Lösung biete ich Ihnen an, <a target="_blank"
+        href="https://docs.python.org/3/tutorial/controlflow.html#for-statements">for loop</a> zu verwenden:
+       <pre class="brush: python">
+for value in items:
+    # do something            
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Zuvor schrieben Sie 'abhängig vom Typ des aktuellen Wertes'.
+        Könnten Sie diesen Schritt bitte präzisieren?
+    </div>
+    <div class="answer">
+        Ja, natürlich! Um zwischen verschiedenen Befehlen zu wählen, verwenden Sie <a target="_blank"
+        href="https://docs.python.org/3/tutorial/controlflow.html#if-statements">if statement</a>:
+       <pre class="brush: python">
+if condition == True:
+    # do something
+else:
+    # do something else
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Und was ist meine Bedingung für die if-Anweisung?
+    </div>
+    <div class="answer">
+        Nun, hier brauchen Sie <a target="_blank" href="https://docs.python.org/3/library/functions.html#type">type()</a>
+        funktion und Typen von Eingabewerten in dieser Mission, die Sie bereits aus der Beschreibung kennen - str und int:
+       <pre class="brush: python">
+if type(value) == str:
+    # do something
+else: # in case of int value
+    # do something else
+        </pre>
+        Da Sie in dieser Aufgabe nur zwei Arten von Werten in der Liste haben,
+        brauchen Sie den anderen Typ nicht zu überprüfen.
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Aber dies ist nur eine Prüfung. Ich habe das Gefühl, dass ich die vorherigen Hinweise kombinieren muss,
+        aber ich weiß nicht, wie. Ich brauche also einen weiteren Hinweis.
+    </div>
+    <div class="answer">
+        Ja, Sie haben Recht! Um alle Werte zu überprüfen, müssen Sie die Überprüfung bei
+        jeder Iteration der for-Anweisung überprüfen. Sie müssen also die if-Anweisung
+        innerhalb der for-Anweisung einfügen:
+       <pre class="brush: python">
+for value in items:
+    if type(value) == str:
+        # do something
+    else:
+        # do something else
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Ok. Was ist als nächstes zu tun? Wie kann ich hinzufügen oder verketten?
+    </div>
+    <div class="answer">
+        Zuallererst müssen Sie vor der for-Anweisung zwei Variablen deklarieren, eine - 
+        für Ihre zukünftige verkettete Zeichenkette, die andere - für die Summe der ganzen Zahlen.
+       <pre class="brush: python">
+conc = ''
+sumed = 0
+        </pre>
+        Dann führen Sie innerhalb der if- und else-Anweisungen die entsprechenden Operationen durch.
+        Beide Typen unterstützen den Verkettungsoperator '+='. Aktualisieren Sie vorher deklarierte Variablen:
+       <pre class="brush: python">
+conc = ''
+sumed = 0
+for value in items:
+    if type(value) == str:
+        conc += value
+    else:
+        sumed += value
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Es fehlt noch etwas. Was ist die endgültige Lösung?
+    </div>
+    <div class="answer">
+        Ja, Sie müssen die Funktion selbst und die Rückgabewerte deklarieren
+        die in conc und summierten Variablen als Tupel gespeichert sind:
+       <pre class="brush: python">
+def sum_by_types(items: list[str, int]) -> tuple[str, int] | list[str, int]:
+    
+    conc = ''
+    sumed = 0
+    for value in items:
+        if type(value) == str:
+            conc += value
+        else:
+            sumed += value
+                    
+    return (conc, sumed)
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Ich frage mich, ob diese Aufgabe in einer Zeile lösbar ist?
+    </div>
+    <div class="answer">
+        Ja, denn Python ist sehr cool! Einer der so genannten Oneliner
+        ist der folgende und muss zusätzlich importiert werden:
+       <pre class="brush: python">
+from functools import reduce
+
+def sum_by_types(items: list[str, int]) -> tuple[str, int] | list[str, int]:
+    
+    return reduce(lambda a, b: (a[0] + b, a[1])
+                               if type(b)!= int
+                               else (a[0], a[1] + b),
+                               [('', 0)] + items)
+
+        </pre>
+        Es ist nur eine Zeile, glauben Sie mir!)
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Toll! Danke! Beide Varianten funktionieren gut! Ich weiß und verstehe jetzt mehr!
+    </div>
+    <div class="answer">
+        Freut mich zu hören!
+    </div>
+</div>
+
+</body>
