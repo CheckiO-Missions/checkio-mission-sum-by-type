@@ -1,0 +1,42 @@
+<!-- Describe task in general -->
+
+<p>
+    Sie haben {% if interpreter.slug == "js-node" %}ein Array{% else %}eine Liste{% endif %}. Jeder Wert aus diesem {% if interpreter.slug == "js-node" %}Array{% else %}Liste{% endif %} kann entweder ein String oder ein Integer sein. Ihre Aufgabe hier ist es, zwei Werte zurückzugeben. Der erste ist eine Verkettung aller Strings aus dem angegebenen {% if interpreter.slug == "js-node" %}array{% else %}list{% endif %}. Der zweite ist eine Summe aller Ganzzahlen aus dem angegebenen {% if interpreter.slug == "js-node" %}array{% else %}list{% endif %}.
+</p>
+
+<!-- Explain input and output values -->
+<p>
+   <strong>Eingabe: </strong> {% if interpreter.slug == "js-node" %}Ein Array{% else %}Eine Liste{% endif %} von Zeichenketten und ganzen Zahlen.
+</p>
+
+<p>
+   <strong>Ausgabe: </strong> {% if interpreter.slug == "js-node" %}Ein Array{% else %}Eine Liste oder ein Tupel{% endif %}.
+</p>
+
+
+<!-- Give some usage examples -->
+<div class="for_info_only">
+    <p>
+        <strong>Beispiele:</strong>
+    </p>
+
+    <pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">{{init_code_tmpl}}</pre>
+</div>
+
+
+<!-- Here you can explain how it can be used in development -->
+<!-- The section is optional -->
+<p class="for_info_only">
+
+    <strong>Wie es verwendet wird: </strong>
+    <i>Eingabe von Werten verschiedener Typen und verschiedene Operationen mit ihnen, 
+        je nach Typ, ist das Übliche in der Entwicklung.
+    </i>
+</p>
+
+<!-- Here you can explain some constraints for input-->
+<!-- The section is optional -->
+<!--<p>
+    <strong>Precondition:</strong>
+    <i>both given ints should be between -1000 and 1000</i>
+</p>-->
