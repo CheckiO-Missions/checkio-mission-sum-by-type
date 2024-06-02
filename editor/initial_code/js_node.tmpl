@@ -10,13 +10,13 @@ function sumByTypes(values: Array<number|string>): [string, number] {
 
 {% block example %}
 console.log('Example:');
-console.log(sumByTypes([])));
+console.log(JSON.stringify(sumByTypes([])));
 {% endblock %}
 
 // These "asserts" are used for self-checking
 {% block tests %}
 {% for t in tests %}
-assert.strictEqual({% block call %}sumByTypes({{t.input|j_args}})
+assert.deepStrictEqual({% block call %}sumByTypes({{t.input|j_args}})
 {% endblock %}, {% block result %}{{t.answer|j}}{% endblock %});{% endfor %}
 {% endblock %}
 
